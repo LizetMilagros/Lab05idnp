@@ -2,13 +2,14 @@ package com.example.lab03;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class PostulanteregistroActivity extends AppCompatActivity {
         EditText edtCarrera = findViewById(R.id.edtCarrera);
         TextView txtMensaje = findViewById(R.id.txtMensaje);
         Button btnRegistrar = findViewById(R.id.btnRegistrar);
-        //Button btnListar = findViewById(R.id.btnListar);
+        Button btnListar = findViewById(R.id.btnListar);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +54,14 @@ public class PostulanteregistroActivity extends AppCompatActivity {
                     Log.d(TAG, "Complete los datos faltantes");
                     txtMensaje.setText("Datos incompletos");
                 }
+                /*Intent i = new Intent(PostulanteregistroActivity.this, MenuActivity.class );
+                Postulante p = new Postulante(apePaterno, apeMaterno,nombres,dni,fecha,colegio,carrera );
+                i.putExtra("p", p);
+                startActivity(i);*/
             }
         });
 
-       /*btnListar.setOnClickListener(new View.OnClickListener() {
+       btnListar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Iterator iter = postulantes.iterator();
@@ -66,6 +71,8 @@ public class PostulanteregistroActivity extends AppCompatActivity {
                     nro++;
                 }
             }
-        });*/
+        });
+
+
     }
 }

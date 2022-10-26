@@ -1,6 +1,9 @@
 package com.example.lab03;
 
-public class Postulante {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Postulante implements Parcelable {
     private String apePaterno, apeMaterno, nombres, dni, fecha, colegio, carrera;
 
     Postulante(String apePaterno, String apeMaterno, String nombres, String dni, String fecha, String colegio, String carrera){
@@ -49,6 +52,9 @@ public class Postulante {
     public String getColegio() {return colegio;}
     public String getCarrera() {return carrera;}
 
+
+
+
     @Override
     public String toString() {
         return "\nApellido paterno: " + apePaterno +
@@ -59,4 +65,52 @@ public class Postulante {
                 "\nColegio de procedencia: " + colegio +
                 "\nCarrera a la que postula: " + carrera;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.apePaterno);
+        dest.writeString(this.apeMaterno);
+        dest.writeString(this.nombres);
+        dest.writeString(this.dni);
+        dest.writeString(this.fecha);
+        dest.writeString(this.colegio);
+        dest.writeString(this.carrera);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.apePaterno = source.readString();
+        this.apeMaterno = source.readString();
+        this.nombres = source.readString();
+        this.dni = source.readString();
+        this.fecha = source.readString();
+        this.colegio = source.readString();
+        this.carrera = source.readString();
+    }
+
+    protected Postulante(Parcel in) {
+        this.apePaterno = in.readString();
+        this.apeMaterno = in.readString();
+        this.nombres = in.readString();
+        this.dni = in.readString();
+        this.fecha = in.readString();
+        this.colegio = in.readString();
+        this.carrera = in.readString();
+    }
+
+    public static final Parcelable.Creator<Postulante> CREATOR = new Parcelable.Creator<Postulante>() {
+        @Override
+        public Postulante createFromParcel(Parcel source) {
+            return new Postulante(source);
+        }
+
+        @Override
+        public Postulante[] newArray(int size) {
+            return new Postulante[size];
+        }
+    };
 }
