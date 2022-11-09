@@ -5,9 +5,11 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        fondo();
         postulantes = new ArrayList<>();
         Button btnInfPostulante = findViewById(R.id.btnPostulante);
         Button btnNuevo = findViewById(R.id.btnNuevo);
@@ -57,4 +60,11 @@ public class MenuActivity extends AppCompatActivity {
             }
         }
     });
+    public void fondo(){
+        ConstraintLayout constraintLayout=findViewById(R.id.mainLayout);
+        AnimationDrawable animationDrawable=(AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
+    }
 }
