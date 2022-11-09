@@ -3,10 +3,12 @@ package com.example.lab03;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Postulante implements Parcelable {
+import java.io.Serializable;
+
+public class Postulante implements Parcelable, Serializable {
     private String apePaterno, apeMaterno, nombres, dni, fecha, colegio, carrera;
 
-    Postulante(String apePaterno, String apeMaterno, String nombres, String dni, String fecha, String colegio, String carrera){
+    Postulante(){
         this.apePaterno = apePaterno;
         this.apeMaterno = apeMaterno;
         this.nombres = nombres;
